@@ -3,21 +3,18 @@
 ## 2. A function to compute inverse & use cashed version if there 
 ##    if there is one instead of re-creating inverse.
 
-## How to use:
-## > m <- matrix(rnorm(16), 4,4)             ##  creates matrix
-## > cacheSolve(makeCacheMatrix(m))          ##  first time create inverse
-## > cacheSolve(makeCacheMatrix(m))          ##  second time onwards cash is returne as below.  
-## Returning Cached Matrix
-## ... invesre of matrix
-
-
 ## function that creates & manages inverse.
 ## retuens list of utility functions.
 
+## example: 
+## source("cachematrix.R")
+## a <- makeCasheMatrix(matrix(rnorm(1:16),4,4))
+## cacheSolve(a)
+## second time onwards cacheSolve(a), will return cached inv.
+
 makeCacheMatrix <- function(x = matrix()) {
 
-   if (!exists("inv"))   inv <<- NULL 
-           
+   inv <- NULL         
    set <- function(m) {       ## saves matrix & initializes invese  
          x <<- m
          inv <<- NULL
